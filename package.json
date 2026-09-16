@@ -1,0 +1,12 @@
+{
+  "name": "instant2",
+  "version": "2.0.0",
+  "private": true,
+  "description": "INSTANT 2 — professional real-time IoT energy monitoring & relay control over MQTT",
+  "scripts": {
+    "install": "npm install --prefix frontend",
+    "dev": "npm start --prefix frontend",
+    "build": "npm run build --prefix frontend",
+    "preview": "npx serve -s frontend/build"
+  }
+}
