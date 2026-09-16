@@ -113,8 +113,8 @@ export default function History() {
   const points = history;
   const labels = points.map((p) => new Date(p.t).toLocaleString([], { hour12: false }));
   const series = [
-    { label: 'Power (W)', data: points.map((p) => p.power), color: '#34D399', fill: true, borderWidth: 2 },
-    { label: 'Voltage (V)', data: points.map((p) => p.voltage), color: '#2DD4BF', fill: false, borderWidth: 1.5, yAxisID: 'y1' },
+    { label: 'Puissance (W)', data: points.map((p) => p.power), color: '#3B82F6', fill: true, borderWidth: 2 },
+    { label: 'Tension (V)', data: points.map((p) => p.voltage), color: '#60A5FA', fill: false, borderWidth: 1.5, yAxisID: 'y1' },
   ];
 
   const recent = [...points].slice(-12).reverse();
@@ -123,42 +123,42 @@ export default function History() {
   return (
     <>
       <TopBar>
-        <Title>History</Title>
+        <Title>Historique</Title>
       </TopBar>
 
       <Card>
-        <CardTitle>Power &amp; voltage &mdash; live window</CardTitle>
+        <CardTitle>Puissance &amp; tension &mdash; fenêtre en direct</CardTitle>
         {points.length > 1 ? (
           <AppLineChart labels={labels} series={series} height={340} />
         ) : (
           <Center>
-            No data captured yet. The device streams on <code>energy/#</code> and
-            readings are accumulated here while the page is open.
+            Aucune donnée capturée pour le moment. L'appareil diffuse sur <code>energy/#</code> et
+            les relevés sont accumulés ici tant que la page est ouverte.
           </Center>
         )}
         <Note>
-          MQTT publishes a live stream without built-in history. This chart shows the rolling
-          5-minute window recorded from the moment this page opened.
+          MQTT publie un flux en direct sans historique intégré. Ce graphique montre la fenêtre
+          glissante de 5&nbsp;minutes enregistrée depuis l'ouverture de cette page.
         </Note>
       </Card>
 
       <Two>
         <Card>
-          <CardTitle>Recent readings</CardTitle>
+          <CardTitle>Derniers relevés</CardTitle>
           {recent.length === 0 ? (
-            <Center>No readings recorded yet.</Center>
+            <Center>Aucun relevé enregistré pour le moment.</Center>
           ) : (
             <Table>
               <TableEl>
                 <thead>
                   <tr>
-                    <Th>Time</Th>
-                    <Th>Voltage (V)</Th>
-                    <Th>Current (A)</Th>
-                    <Th>Power (W)</Th>
-                    <Th>PF</Th>
-                    <Th>Energy (kWh)</Th>
-                    <Th>Freq (Hz)</Th>
+                    <Th>Heure</Th>
+                    <Th>Tension (V)</Th>
+                    <Th>Courant (A)</Th>
+                    <Th>Puissance (W)</Th>
+                    <Th>FP</Th>
+                    <Th>Énergie (kWh)</Th>
+                    <Th>Fréq (Hz)</Th>
                   </tr>
                 </thead>
                 <tbody>
@@ -180,16 +180,16 @@ export default function History() {
         </Card>
 
         <Card>
-          <CardTitle>Relay activity</CardTitle>
+          <CardTitle>Activité du relais</CardTitle>
           {log.length === 0 ? (
-            <Center>No relay toggles logged yet.</Center>
+            <Center>Aucun basculement de relais enregistré pour le moment.</Center>
           ) : (
             <Table>
               <TableEl>
                 <thead>
                   <tr>
-                    <Th>Time</Th>
-                    <Th>State</Th>
+                    <Th>Heure</Th>
+                    <Th>État</Th>
                   </tr>
                 </thead>
                 <tbody>

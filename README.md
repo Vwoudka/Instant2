@@ -1,9 +1,9 @@
 # INSTANT 2
 
-Professional real-time IoT energy monitoring and relay control dashboard, communicating over **MQTT** with an **ESP32S2**.
+Monitoring énergie IoT en temps réel et contrôle de relais, communiquant via **MQTT** avec un **ESP32S2**.
 
 [![stack](https://img.shields.io/badge/stack-React%20%2B%20MQTT.js-brightgreen)]()
-[![real-time](https://img.shields.io/badge/data-live%202%20s%20stream-34D399)]()
+[![real-time](https://img.shields.io/badge/data-flux%20en%20direct%202%20s-3B82F6)]()
 [![hosting](https://img.shields.io/badge/host-GitHub%20Pages-ff007f)]()
 [![protocol](https://img.shields.io/badge/protocol-MQTT%20over%20WebSocket-yellow)]()
 

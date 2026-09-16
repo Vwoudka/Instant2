@@ -39,12 +39,12 @@ export default function FaultBanner({ fault }) {
     <Banner role="alert">
       <WarningIcon size={22} color="#F87171" />
       <div>
-        <strong style={{ color: '#F87171' }}>FAULT DETECTED</strong>
+        <strong style={{ color: '#F87171' }}>DÉFAUT DÉTECTÉ</strong>
         <div style={{ fontSize: 13, marginTop: 2 }}>
-          {fault} — one or more safety limits have been exceeded.
+          {fault} — un ou plusieurs seuils de sécurité ont été dépassés.
         </div>
       </div>
-      <ResetBtn onClick={resetFault}>Reset</ResetBtn>
+      <ResetBtn onClick={resetFault}>Réinitialiser</ResetBtn>
     </Banner>
   );
 }

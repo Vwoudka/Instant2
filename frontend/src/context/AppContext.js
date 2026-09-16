@@ -126,10 +126,10 @@ export function AppProvider({ children }) {
     const next = stateRef.current.relay === 'ON' ? 'OFF' : 'ON';
     const ok = clientRef.current && clientRef.current.publish(TOPICS.relayCmd, next);
     if (ok) {
-      notify('success', `Relay command sent: ${next}`);
+      notify('success', `Commande relais envoyée : ${next}`);
       return true;
     }
-    notify('error', 'Not connected to MQTT broker — command not sent');
+    notify('error', 'Non connecté au broker MQTT — commande non envoyée');
     return false;
   }, [notify]);
 
@@ -145,7 +145,7 @@ export function AppProvider({ children }) {
       const pmax = Number(payload.pmax);
 
       if (!Number.isFinite(vmax) || !Number.isFinite(imax) || !Number.isFinite(pmax)) {
-        notify('error', 'Thresholds must be valid numbers');
+        notify('error', 'Les seuils doivent être des nombres valides');
         return false;
       }
 
@@ -156,10 +156,10 @@ export function AppProvider({ children }) {
 
       if (published) {
         setState((s) => ({ ...s, thresholds: { vmax, imax, pmax }, thresholdsSource: 'mqtt' }));
-        notify('success', 'Thresholds published over MQTT');
+        notify('success', 'Seuils publiés via MQTT');
         return true;
       }
-      notify('error', 'Not connected to MQTT broker — settings not published');
+      notify('error', 'Non connecté au broker MQTT — paramètres non publiés');
       return false;
     },
     [notify]
@@ -167,7 +167,7 @@ export function AppProvider({ children }) {
 
   const resetFault = useCallback(() => {
     setState((s) => ({ ...s, fault: null }));
-    notify('info', 'Fault indicator cleared');
+    notify('info', 'Indicateur de défaut réinitialisé');
   }, [notify]);
 
   const toggleTheme = useCallback(() => {

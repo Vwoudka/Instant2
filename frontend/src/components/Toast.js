@@ -12,7 +12,7 @@ const Host = styled.div`
   z-index: 1000;
 `;
 
-const COLORS = { success: '#34D399', error: '#F87171', info: '#2DD4BF' };
+const COLORS = { success: '#3B82F6', error: '#F87171', info: '#60A5FA' };
 
 const Item = styled.div`
   min-width: 260px;
@@ -51,7 +51,7 @@ export default function ToastHost() {
       {toasts.map((t) => (
         <Item key={t.id} $type={t.type}>
           <span>{t.message}</span>
-          <Close onClick={() => dismissToast(t.id)} aria-label="Dismiss">x</Close>
+          <Close onClick={() => dismissToast(t.id)} aria-label="Fermer">x</Close>
         </Item>
       ))}
     </Host>

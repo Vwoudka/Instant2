@@ -27,8 +27,8 @@ export default function AppLineChart({
   labels,
   series,
   height = 300,
-  yTitle = 'Power (W)',
-  y2Title = 'Voltage (V)',
+  yTitle = 'Puissance (W)',
+  y2Title = 'Tension (V)',
 }) {
   const theme = useTheme();
 

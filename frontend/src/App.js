@@ -46,7 +46,7 @@ export default function App() {
             <Route path="*" element={<Dashboard />} />
           </Routes>
         </Main>
-        <Footer>INSTANT 2 &middot; real-time energy monitoring over MQTT</Footer>
+        <Footer>INSTANT 2 &middot; monitoring énergie en temps réel via MQTT</Footer>
       </Shell>
       <ToastHost />
     </ThemeProvider>

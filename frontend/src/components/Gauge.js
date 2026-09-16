@@ -25,7 +25,7 @@ export default function Gauge({ value, max, color, size = 132, stroke = 11 }) {
         cy={center}
         r={r}
         fill="none"
-        stroke="rgba(52, 211, 153, 0.10)"
+        stroke="rgba(59, 130, 246, 0.10)"
         strokeWidth={stroke}
       />
       <Arc

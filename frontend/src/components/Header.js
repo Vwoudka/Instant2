@@ -32,11 +32,11 @@ const BrandMark = styled.div`
   width: 38px;
   height: 38px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #34D399, #0EA5A0);
+  background: linear-gradient(135deg, #3B82F6, #2563EB);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0E1512;
+  color: #ffffff;
 `;
 
 const Nav = styled.nav`
@@ -101,10 +101,10 @@ const ThemeBtn = styled.button`
 `;
 
 const STATUS_LABEL = {
-  connecting: 'Connecting',
-  connected: 'Live',
-  reconnecting: 'Reconnecting',
-  offline: 'Offline',
+  connecting: 'Connexion',
+  connected: 'En direct',
+  reconnecting: 'Reconnexion',
+  offline: 'Hors ligne',
 };
 
 export default function Header() {
@@ -121,17 +121,17 @@ export default function Header() {
       </Brand>
 
       <Nav>
-        <StyledNavLink to="/">Dashboard</StyledNavLink>
-        <StyledNavLink to="/history">History</StyledNavLink>
-        <StyledNavLink to="/settings">Settings</StyledNavLink>
+        <StyledNavLink to="/">Tableau de bord</StyledNavLink>
+        <StyledNavLink to="/history">Historique</StyledNavLink>
+        <StyledNavLink to="/settings">Paramètres</StyledNavLink>
       </Nav>
 
       <Right>
-        <Status title={`MQTT status: ${mqttStatus}`}>
+        <Status title={`Statut MQTT : ${mqttStatus}`}>
           <StatusDot on={online} />
           <span>{STATUS_LABEL[mqttStatus] || mqttStatus}</span>
         </Status>
-        <ThemeBtn onClick={toggleTheme} title="Toggle theme" aria-label="Toggle theme">
+        <ThemeBtn onClick={toggleTheme} title="Changer de thème" aria-label="Changer de thème">
           {theme === 'dark' ? <SunIcon size={18} /> : <MoonIcon size={18} />}
         </ThemeBtn>
       </Right>

@@ -8,10 +8,10 @@ import FaultBanner from '../components/FaultBanner';
 import { BoltIcon, WaveIcon, ZapIcon, PulseIcon, EnergyIcon, FrequencyIcon } from '../components/Icons';
 
 const ACCENTS = {
-  voltage: '#2DD4BF',
+  voltage: '#60A5FA',
   current: '#FACC15',
-  power: '#34D399',
-  pf: '#0EA5A0',
+  power: '#3B82F6',
+  pf: '#93C5FD',
   energy: '#FDE047',
   frequency: '#F59E0B',
 };
@@ -89,20 +89,20 @@ export default function Dashboard() {
 
   const labels = history.map((h) => new Date(h.t).toLocaleTimeString([], { hour12: false }));
   const series = [
-    { label: 'Power (W)', data: history.map((h) => h.power), color: ACCENTS.power, fill: true, borderWidth: 2 },
-    { label: 'Voltage (V)', data: history.map((h) => h.voltage), color: ACCENTS.voltage, fill: false, borderWidth: 1.5, yAxisID: 'y1' },
+    { label: 'Puissance (W)', data: history.map((h) => h.power), color: ACCENTS.power, fill: true, borderWidth: 2 },
+    { label: 'Tension (V)', data: history.map((h) => h.voltage), color: ACCENTS.voltage, fill: false, borderWidth: 1.5, yAxisID: 'y1' },
   ];
 
   return (
     <>
       <TopBar>
-        <Title>Dashboard</Title>
+        <Title>Tableau de bord</Title>
         <LastUpdated>
           {live
-            ? `Live · ${lastUpdated ? new Date(lastUpdated).toLocaleTimeString([], { hour12: false }) : 'streaming from MQTT'}`
+            ? `En direct · ${lastUpdated ? new Date(lastUpdated).toLocaleTimeString([], { hour12: false }) : 'en streaming depuis MQTT'}`
             : lastUpdated
-            ? `Last message ${new Date(lastUpdated).toLocaleTimeString([], { hour12: false })}`
-            : 'Waiting for MQTT data\u2026'}
+            ? `Dernier message ${new Date(lastUpdated).toLocaleTimeString([], { hour12: false })}`
+            : 'En attente de données MQTT\u2026'}
         </LastUpdated>
       </TopBar>
 
@@ -110,7 +110,7 @@ export default function Dashboard() {
 
       <Cards>
         <MetricCard
-          label="Voltage"
+          label="Tension"
           value={voltage}
           unit="V"
           color={ACCENTS.voltage}
@@ -119,7 +119,7 @@ export default function Dashboard() {
           decimals={1}
         />
         <MetricCard
-          label="Current"
+          label="Courant"
           value={current}
           unit="A"
           color={ACCENTS.current}
@@ -128,7 +128,7 @@ export default function Dashboard() {
           decimals={2}
         />
         <MetricCard
-          label="Power"
+          label="Puissance"
           value={power}
           unit="W"
           color={ACCENTS.power}
@@ -137,7 +137,7 @@ export default function Dashboard() {
           decimals={0}
         />
         <MetricCard
-          label="Power Factor"
+          label="Facteur de puissance"
           value={pf}
           unit=""
           color={ACCENTS.pf}
@@ -146,7 +146,7 @@ export default function Dashboard() {
           decimals={2}
         />
         <MetricCard
-          label="Energy"
+          label="Énergie"
           value={energy}
           unit="kWh"
           color={ACCENTS.energy}
@@ -155,7 +155,7 @@ export default function Dashboard() {
           decimals={4}
         />
         <MetricCard
-          label="Frequency"
+          label="Fréquence"
           value={frequency}
           unit="Hz"
           color={ACCENTS.frequency}
@@ -167,14 +167,14 @@ export default function Dashboard() {
 
       <Lower>
         <ChartCard>
-          <CardTitle>Power consumption &mdash; live stream</CardTitle>
+          <CardTitle>Consommation &mdash; flux en direct</CardTitle>
           {history.length > 1 ? (
             <AppLineChart labels={labels} series={series} height={320} />
           ) : (
             <Empty>
-              Waiting for readings on <code>energy/#</code>&hellip;
+              En attente de relevés sur <code>energy/#</code>&hellip;
               <br />
-              The device publishes every ~2 s; the chart fills in as data arrives.
+              L'appareil publie toutes les ~2&nbsp;s ; le graphique se remplit au fil des données.
             </Empty>
           )}
         </ChartCard>

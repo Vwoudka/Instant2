@@ -1,41 +1,41 @@
 import { createGlobalStyle } from 'styled-components';
 import styled from 'styled-components';
 
-// Professional green/turquoise/yellow palette. Dark is the default look of INSTANT 2.
+// Professional blue/yellow palette. Dark is the default look of INSTANT 2.
 export const palettes = {
   dark: {
     name: 'dark',
-    bg: '#0E1512',
-    bg2: '#16211C',
-    panel: 'rgba(255, 255, 255, 0.035)',
+    bg: '#0B1020',
+    bg2: '#121B30',
+    panel: 'rgba(255, 255, 255, 0.04)',
     panelBorder: 'rgba(255, 255, 255, 0.08)',
-    text: '#EAF5EE',
-    textDim: '#8FA69B',
-    green: '#34D399',
-    turquoise: '#2DD4BF',
+    text: '#E8EEF8',
+    textDim: '#7A88A8',
+    green: '#3B82F6',
+    turquoise: '#60A5FA',
     yellow: '#FACC15',
-    emerald: '#00E676',
+    emerald: '#2563EB',
     orange: '#F59E0B',
     red: '#F87171',
-    glow: 'rgba(52, 211, 153, 0.25)',
+    glow: 'rgba(59, 130, 246, 0.25)',
     shadow: 'rgba(0, 0, 0, 0.4)',
   },
   light: {
     name: 'light',
-    bg: '#F4F9F6',
+    bg: '#EFF4FB',
     bg2: '#FFFFFF',
     panel: 'rgba(255, 255, 255, 0.85)',
-    panelBorder: 'rgba(16, 40, 30, 0.12)',
-    text: '#14231C',
-    textDim: '#5C7468',
-    green: '#059669',
-    turquoise: '#0D9488',
+    panelBorder: 'rgba(16, 30, 60, 0.10)',
+    text: '#141E35',
+    textDim: '#5A6A8A',
+    green: '#2563EB',
+    turquoise: '#3B82F6',
     yellow: '#D97706',
-    emerald: '#00A862',
+    emerald: '#1D4ED8',
     orange: '#D97706',
     red: '#DC2626',
-    glow: 'rgba(5, 150, 105, 0.2)',
-    shadow: 'rgba(16, 40, 30, 0.12)',
+    glow: 'rgba(37, 99, 235, 0.2)',
+    shadow: 'rgba(16, 30, 60, 0.10)',
   },
 };
 
@@ -78,7 +78,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-// Subtle, professional backdrop with a soft green-turquoise wash.
+// Subtle, professional backdrop with a soft blue wash.
 export const Background = styled.div`
   position: fixed;
   inset: 0;
@@ -87,6 +87,6 @@ export const Background = styled.div`
   background: ${(p) => p.theme.bg};
   background-image: ${(p) =>
     p.theme.name === 'dark'
-      ? 'radial-gradient(1100px 560px at 85% -12%, rgba(45, 212, 191, 0.07), transparent 60%), radial-gradient(900px 640px at -8% 112%, rgba(52, 211, 153, 0.07), transparent 60%)'
-      : 'radial-gradient(1100px 560px at 85% -12%, rgba(13, 148, 136, 0.06), transparent 60%), radial-gradient(900px 640px at -8% 112%, rgba(5, 150, 105, 0.06), transparent 60%)'};
+      ? 'radial-gradient(1100px 560px at 85% -12%, rgba(59, 130, 246, 0.08), transparent 60%), radial-gradient(900px 640px at -8% 112%, rgba(96, 165, 250, 0.06), transparent 60%)'
+      : 'radial-gradient(1100px 560px at 85% -12%, rgba(59, 130, 246, 0.06), transparent 60%), radial-gradient(900px 640px at -8% 112%, rgba(37, 99, 235, 0.05), transparent 60%)'};
 `;

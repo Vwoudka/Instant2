@@ -76,11 +76,11 @@ const SaveBtn = styled.button`
   font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.5px;
-  color: #0E1512;
-  background: linear-gradient(135deg, #34D399, #0EA5A0);
+  color: #ffffff;
+  background: linear-gradient(135deg, #3B82F6, #2563EB);
   cursor: pointer;
   transition: opacity 0.2s, transform 0.15s;
-  box-shadow: 0 8px 22px rgba(52, 211, 153, 0.25);
+  box-shadow: 0 8px 22px rgba(59, 130, 246, 0.25);
 
   &:hover {
     transform: translateY(-1px);
@@ -203,11 +203,11 @@ export default function Settings() {
   const validate = () => {
     const n = (x) => Number(x);
     if (!Number.isFinite(n(vmax)) || n(vmax) <= 0 || n(vmax) > 400)
-      return 'Voltage max must be between 1 and 400 V';
+      return 'La tension max doit être comprise entre 1 et 400 V';
     if (!Number.isFinite(n(imax)) || n(imax) <= 0 || n(imax) > 100)
-      return 'Current max must be between 0.1 and 100 A';
+      return 'Le courant max doit être compris entre 0,1 et 100 A';
     if (!Number.isFinite(n(pmax)) || n(pmax) <= 0 || n(pmax) > 100000)
-      return 'Power max must be between 1 and 100000 W';
+      return 'La puissance max doit être comprise entre 1 et 100000 W';
     return null;
   };
 
@@ -228,29 +228,29 @@ export default function Settings() {
 
   return (
     <>
-      <Title>Settings</Title>
+      <Title>Paramètres</Title>
 
       <Grid>
         <Card>
           <CardTitle>
-            Safety thresholds
-            <Chip $ok>From MQTT</Chip>
+            Seuils de sécurité
+            <Chip $ok>Depuis MQTT</Chip>
           </CardTitle>
 
           <ConnectBox>
             <Dot $status={mqttStatus} />
             <span>
-              MQTT:{' '}
+              MQTT :{' '}
               {mqttStatus === 'connected'
-                ? 'connected to broker'
+                ? 'connecté au broker'
                 : mqttStatus === 'connecting'
-                ? 'connecting to broker\u2026'
+                ? 'connexion au broker\u2026'
                 : mqttStatus}
             </span>
           </ConnectBox>
 
           <Field>
-            <FieldLabel>Voltage max (V)</FieldLabel>
+            <FieldLabel>Tension max (V)</FieldLabel>
             <Input
               type="number"
               min="1"
@@ -262,7 +262,7 @@ export default function Settings() {
           </Field>
 
           <Field>
-            <FieldLabel>Current max (A)</FieldLabel>
+            <FieldLabel>Courant max (A)</FieldLabel>
             <Input
               type="number"
               min="0.1"
@@ -274,7 +274,7 @@ export default function Settings() {
           </Field>
 
           <Field>
-            <FieldLabel>Power max (W)</FieldLabel>
+            <FieldLabel>Puissance max (W)</FieldLabel>
             <Input
               type="number"
               min="1"
@@ -287,48 +287,49 @@ export default function Settings() {
 
           <div>
             <SaveBtn onClick={handleSave} disabled={saving || !connected}>
-              {saving ? 'Publishing\u2026' : 'Publish thresholds over MQTT'}
+              {saving ? 'Publication\u2026' : 'Publier les seuils via MQTT'}
             </SaveBtn>
           </div>
 
           <Note>
-            Values are published as retained messages so the ESP32 receives them even if it
-            reconnects to the broker later. The device applies the limits on its next config
-            sync and flags a fault when a live reading exceeds them.
+            Les valeurs sont publiées en messages conservés (retained) pour que l'ESP32 les reçoive
+            même s'il se reconnecte au broker plus tard. L'appareil applique les limites à sa
+            prochaine synchronisation et signale un défaut si un relevé en direct les dépasse.
           </Note>
         </Card>
 
         <Card>
-          <CardTitle>MQTT configuration</CardTitle>
+          <CardTitle>Configuration MQTT</CardTitle>
 
           <Note>
-            <strong>Broker:</strong> HiveMQ public broker (WebSocket). The ESP32 firmware uses
-            the same broker over TCP&nbsp;1883, so the app and device share a connection.
+            <strong>Broker :</strong> broker public HiveMQ (WebSocket). Le firmware ESP32 utilise
+            le même broker en TCP&nbsp;1883, de sorte que l'application et l'appareil partagent
+            une même connexion.
           </Note>
 
           <TopicsTable>
             <thead>
               <tr>
-                <Th>Uses</Th>
-                <Th>Topic</Th>
+                <Th>Usage</Th>
+                <Th>Sujet (Topic)</Th>
               </tr>
             </thead>
             <tbody>
               {[
-                { label: 'Reads', topic: 'energy/voltage' },
-                { label: 'Reads', topic: 'energy/current' },
-                { label: 'Reads', topic: 'energy/power' },
-                { label: 'Reads', topic: 'energy/pf' },
-                { label: 'Reads', topic: 'energy/energy' },
-                { label: 'Reads', topic: 'energy/frequency' },
-                { label: 'Reads', topic: 'relay/state' },
-                { label: 'Reads', topic: 'fault/status' },
-                { label: 'Reads', topic: 'settings/vmax · settings/imax · settings/pmax' },
-                { label: 'Sends', topic: TOPICS.relayCmd },
+                { label: 'Lecture', topic: 'energy/voltage' },
+                { label: 'Lecture', topic: 'energy/current' },
+                { label: 'Lecture', topic: 'energy/power' },
+                { label: 'Lecture', topic: 'energy/pf' },
+                { label: 'Lecture', topic: 'energy/energy' },
+                { label: 'Lecture', topic: 'energy/frequency' },
+                { label: 'Lecture', topic: 'relay/state' },
+                { label: 'Lecture', topic: 'fault/status' },
+                { label: 'Lecture', topic: 'settings/vmax · settings/imax · settings/pmax' },
+                { label: 'Envoi', topic: TOPICS.relayCmd },
               ].map((r) => (
                 <tr key={r.topic}>
                   <Td>
-                    <Badge $pub={r.label === 'Sends'}>{r.label.toUpperCase()}</Badge>
+                    <Badge $pub={r.label === 'Envoi'}>{r.label === 'Envoi' ? 'ENVOI' : 'LECTURE'}</Badge>
                   </Td>
                   <Td>
                     <code>{r.topic}</code>
@@ -339,9 +340,9 @@ export default function Settings() {
           </TopicsTable>
 
           <Note>
-            Live relay state: <strong>{state.relay}</strong>. The dashboard switch publishes{' '}
-            <code>ON</code>/<code>OFF</code> on <code>{TOPICS.relayCmd}</code>; the device echoes
-            the applied state back on <code>{'relay/state'}</code>.
+            État relais en direct : <strong>{state.relay}</strong>. L'interrupteur du tableau de
+            bord publie <code>ON</code>/<code>OFF</code> sur <code>{TOPICS.relayCmd}</code> ;
+            l'appareil renvoie l'état appliqué sur <code>{'relay/state'}</code>.
           </Note>
         </Card>
       </Grid>

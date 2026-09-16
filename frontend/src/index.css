@@ -27,10 +27,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(52, 211, 153, 0.22);
+  background: rgba(59, 130, 246, 0.22);
   border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(52, 211, 153, 0.4);
+  background: rgba(59, 130, 246, 0.4);
 }

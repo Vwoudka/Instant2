@@ -38,13 +38,13 @@ const Track = styled.button`
   cursor: pointer;
   background: ${(p) =>
     p.$on
-      ? 'linear-gradient(135deg, #34D399, #0EA5A0)'
+      ? 'linear-gradient(135deg, #3B82F6, #2563EB)'
       : p.theme.name === 'dark'
-      ? '#1C2A24'
-      : '#E3EEE9'};
+      ? '#141D32'
+      : '#E0E7F4'};
   box-shadow: ${(p) =>
     p.$on
-      ? '0 0 18px rgba(52,211,153,.4), inset 0 0 14px rgba(255,255,255,.2)'
+      ? '0 0 18px rgba(59,130,246,.4), inset 0 0 14px rgba(255,255,255,.2)'
       : `inset 0 3px 8px ${p.theme.shadow}`};
   transition: background 0.3s ease;
   &:disabled {
@@ -60,8 +60,8 @@ const Knob = styled.span`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: ${(p) => (p.theme.name === 'dark' ? '#0f1613' : '#ffffff')};
-  color: ${(p) => (p.$on ? '#34D399' : p.theme.textDim)};
+  background: ${(p) => (p.theme.name === 'dark' ? '#0d1422' : '#ffffff')};
+  color: ${(p) => (p.$on ? '#3B82F6' : p.theme.textDim)};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,7 +104,7 @@ export default function RelaySwitch() {
   return (
     <Panel>
       <PanelTitle>
-        <PlugIcon size={16} /> Relay Control
+        <PlugIcon size={16} /> Contrôle du relais
       </PanelTitle>
       <Track
         $on={on}
@@ -112,16 +112,16 @@ export default function RelaySwitch() {
         disabled={busy}
         role="switch"
         aria-checked={on}
-        aria-label="Relay switch"
+        aria-label="Interrupteur relais"
       >
         <Knob $on={on}>
           <PlugIcon size={18} />
         </Knob>
       </Track>
-      <StateLine $on={on}>{on ? 'RELAY ON' : 'RELAY OFF'}</StateLine>
+      <StateLine $on={on}>{on ? 'RELAIS ON' : 'RELAIS OFF'}</StateLine>
       <Hint>
-        Click to send &quot;{on ? 'OFF' : 'ON'}&quot; on <code>relay/command</code>.
-        The device applies it and reports back on <code>relay/state</code>.
+        Cliquez pour envoyer &quot;{on ? 'OFF' : 'ON'}&quot; sur <code>relay/command</code>.
+        L'appareil applique la commande et renvoie l'état sur <code>relay/state</code>.
       </Hint>
     </Panel>
   );

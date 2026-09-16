@@ -1,12 +1,12 @@
 {
   "short_name": "INSTANT 2",
-  "name": "INSTANT 2 Energy Monitoring",
-  "description": "INSTANT 2 — professional real-time IoT energy monitoring and relay control over MQTT",
+  "name": "INSTANT 2 Monitoring Energie",
+  "description": "INSTANT 2 — monitoring energie temps reel via MQTT",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",
-  "background_color": "#0E1512",
-  "theme_color": "#0E1512",
+  "background_color": "#0B1020",
+  "theme_color": "#0B1020",
   "icons": [
     {
       "src": "icons/icon-192.png",
